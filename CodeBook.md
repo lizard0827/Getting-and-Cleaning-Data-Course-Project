@@ -6,14 +6,16 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. 
 
-1. read data with read.table()function.
-2. read activity_labels.
-3. read and name variables of test and train data with features.
-3. read and labels subject_ID for test and train data.
-4. combine test and train data with their subject_ID, activity_ID and data using cbind()function.
-5. merge the test and training data sets to one data set with rbind()function.
-6. extract only the measurements on the mean and the standard deviation for each measurement using grep()function.
-7. Use descriptive activity names (activity_labels) to name the activities in the data set.
-8. melt the dataset with id variables and measure variables using melt()funciton.
-9. use dcast()funciton to create a second, independent tidy data set with the average of each variable for each activity and each subject.
-10. create a tidy_data.txt file using write.talbe()function. 
+# Variables and performance to clean data.
+1. x_train, y_train, x_test, y_test, subject_train and subject_test contain the data from the downloaded files.
+2. read data with read.table()function.
+3. read activity_labels.
+4. read and name variables of test and train data with features.
+5. read and labels subject_ID for test and train data.
+6. combine test and train data with their subject_ID, activity_ID and data using cbind()function.
+7. merge the test and training data sets to one data set with rbind()function.
+8. extract only the measurements on the mean and the standard deviation for each measurement using grep()function.
+9. Use descriptive activity names (activity_labels) to name the activities in the data set.
+10. melt the dataset with id variables and measure variables using melt()funciton.
+11. use dcast()funciton to create a second, independent tidy data set with the average of each variable for each activity and each subject.
+12. create a tidy_data.txt file using write.talbe()function. 
