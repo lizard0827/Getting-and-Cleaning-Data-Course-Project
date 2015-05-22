@@ -45,19 +45,19 @@ test_data<-cbind(testsubject, testlabels, testdata)
 train_data<-cbind(trainsubject, trainlabels, traindata)
 # merge the test and training sets to one data set.
 alldata<-rbind(test_data, train_data)
-#Extracts only the measurements on the mean and standard deviation for each measurement.
+#Extract only the measurements on the mean and standard deviation for each measurement.
 mean_cols<-grep("mean", names(alldata), ignore.case=TRUE)
 mean_col_names<-names(alldata[mean_cols])
 std_cols<-grep("std", names(alldata), ignore.case=TRUE)
 std_col_names<-names(alldata[std_cols])
 data_mean_std<-alldata[,c("subject_ID", "activity_ID", mean_col_names, std_col_names)]
-#Uses descriptive activity names to name the activities in the data set.
-#Appropriately labels the data set with descriptive variable names. 
+#Use descriptive activity names to name the activities in the data set.
+#Appropriately label the data set with descriptive variable names. 
 colnames(activity_labels)<-c("activity_ID", "activity_names")
 decrnames<-merge(activity_labels, data_mean_std, by.x="activity_ID", by.y="activity_ID", all=TRUE)
-#creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+#create a second, independent tidy data set with the average of each variable for each activity and each subject.
 #melt the dataset with id variables and measure variables
 melt_data<-melt(decrnames, id=c("activity_ID", "activity_names", "subject_ID"))
 average_data<-dcast(melt_data, activity_ID+activity_names+subject_ID~variable, mean)
-#creat a tidy dataset
+#create a tidy dataset
 write.table(average_data, file="./tidy_data.txt")
